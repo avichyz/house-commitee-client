@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react'
+import { Checkbox, Table } from 'semantic-ui-react'
+import style from './residents.scss';
 
 const propTypes = {
-    data: PropTypes.object
+    data: PropTypes.array
 }
-class Users extends Component {
+class Residents extends Component {
     constructor(props) {
         super(props);
 
@@ -41,7 +42,7 @@ class Users extends Component {
         const { data, columns } = this.props;
 
         return (
-            <Table celled compact sortable definition>
+            <Table celled compact sortable definition className={style.table}>
                 <Table.Header fullWidth>
                     <Table.Row>
                         {
@@ -73,5 +74,5 @@ class Users extends Component {
     }
 }
 
-Users.propTypes = propTypes;
-export default Users
+Residents.propTypes = propTypes;
+export default Residents

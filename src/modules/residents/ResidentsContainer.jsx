@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Users from './Users';
+import Residents from './Residents';
 
 const residents = [
     {
@@ -33,12 +33,12 @@ const columns = [
     'טלפון2',
 ]
 
-class UsersContainer extends Component {
+class ResidentsContainer extends Component {
     render() {
         return (
-            <Users data={residents} columns={columns}/>
+            <Residents data={residents} columns={columns}/>
         )
     }
 }
 
-export default UsersContainer;
+export default ResidentsContainer;

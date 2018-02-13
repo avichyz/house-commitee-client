@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Segment, Button, Menu, Icon, Sidebar } from 'semantic-ui-react'
 // import Sidebar from '../components/Sidebar/Sidebar';
 import { Route, Link } from 'react-router-dom'
-import UsersContainer from '../modules/users/UsersContainer';
+import ResidentsContainer from '../modules/residents/ResidentsContainer';
 import GalleryContainer from '../modules/gallery/GalleryContainer';
+import Building from '../modules/buildingLayout/building/Building';
 import AboutContainer from '../modules/about/AboutContainer';
 import styles from './app.scss';
 
@@ -51,10 +52,16 @@ class App extends Component {
             icon='labeled'
             vertical
             inverted>
-            <Link to="/users">
-              <Menu.Item name='users'>
+            <Link to="/residents">
+              <Menu.Item name='residents'>
                 <Icon name='users' />
-                משתמשים
+                דיירים
+            </Menu.Item>
+            </Link>
+            <Link to="/building">
+              <Menu.Item name='building'>
+                <Icon name='users' />
+                הזנת תשלומים
             </Menu.Item>
             </Link>
             <Link to="/gallery">
@@ -74,8 +81,9 @@ class App extends Component {
           className={styles.content}
           onClick={this.handleSidebarClose}>
             <Segment basic>
+              <Route exact path="/residents" component={ResidentsContainer} />
+              <Route exact path="/building" component={Building} />
               <Route exact path="/gallery" component={GalleryContainer} />
-              <Route exact path="/users" component={UsersContainer} />
               <Route exact path="/about" component={AboutContainer} />
             </Segment>
           </Sidebar.Pusher>

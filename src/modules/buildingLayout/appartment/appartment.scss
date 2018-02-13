@@ -1,0 +1,24 @@
+:local .container {
+    margin: 4px !important;
+    text-align: center;
+}
+
+:local .textContainer {
+    height: 50%;
+}
+
+:local .paid {
+    background-color: greenyellow !important;
+}
+
+:local .onTime {
+    background-color: olivedrab !important;
+}
+
+:local .closeToOverDue {
+    background-color: gold !important;
+}
+
+:local .overDue {
+    background-color: orangered !important;
+}
