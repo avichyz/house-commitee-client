@@ -36,7 +36,7 @@ class App extends Component {
       <div className={styles.app}>
         <header className={styles.appHeader}>
           <Icon className={styles.userCircle} name='user circle' />
-          <h1 className={styles.appTitle}>רהיטי רון</h1>
+          <h1 className={styles.appTitle}>שדרות לכיש 65</h1>
           <Icon
             className={styles.barsIcon}
             onClick={this.toggleVisibility}
@@ -64,6 +64,12 @@ class App extends Component {
                 הזנת תשלומים
             </Menu.Item>
             </Link>
+              <Link to="/floors">
+                <Menu.Item name='floors'>
+                  <Icon name='users' />
+                  ניהול קומות
+            </Menu.Item>
+            </Link>
             <Link to="/gallery">
               <Menu.Item name='gallery'>
                 <Icon name='image' />
@@ -81,6 +87,7 @@ class App extends Component {
           className={styles.content}
           onClick={this.handleSidebarClose}>
             <Segment basic>
+            {/* perhsaps use sticky => ? => <div className={styles.rightSideDiv}></div> */}
               <Route exact path="/residents" component={ResidentsContainer} />
               <Route exact path="/building" component={Building} />
               <Route exact path="/gallery" component={GalleryContainer} />
