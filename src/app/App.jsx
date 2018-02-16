@@ -6,6 +6,8 @@ import ResidentsContainer from '../modules/residents/ResidentsContainer';
 import GalleryContainer from '../modules/gallery/GalleryContainer';
 import Building from '../modules/buildingLayout/building/Building';
 import AboutContainer from '../modules/about/AboutContainer';
+import store from '../store';
+import { push } from 'react-router-redux'
 import styles from './app.scss';
 
 class App extends Component {
@@ -21,6 +23,9 @@ class App extends Component {
     this.toggleVisibility = this.toggleVisibility.bind(this);
   }
 
+  componentDidMount() {
+    store.dispatch(push('/about'))
+  }
   handleSidebarOpen() {
     this.setState({ sidebarOpen: true });
   }
@@ -36,7 +41,7 @@ class App extends Component {
       <div className={styles.app}>
         <header className={styles.appHeader}>
           <Icon className={styles.userCircle} name='user circle' />
-          <h1 className={styles.appTitle}>רהיטי רון</h1>
+          <h1 className={styles.appTitle}>שדרות לכיש 65</h1>
           <Icon
             className={styles.barsIcon}
             onClick={this.toggleVisibility}
@@ -52,25 +57,31 @@ class App extends Component {
             icon='labeled'
             vertical
             inverted>
-            <Link to="/residents">
+            <Link to="/residents" onClick={this.handleSidebarClose}>
               <Menu.Item name='residents'>
                 <Icon name='users' />
                 דיירים
             </Menu.Item>
             </Link>
-            <Link to="/building">
+            <Link to="/building" onClick={this.handleSidebarClose}>
               <Menu.Item name='building'>
                 <Icon name='users' />
                 הזנת תשלומים
             </Menu.Item>
             </Link>
-            <Link to="/gallery">
+            <Link to="/floors" onClick={this.handleSidebarClose}>
+                <Menu.Item name='floors'>
+                  <Icon name='users' />
+                  ניהול קומות
+            </Menu.Item>
+            </Link>
+            <Link to="/gallery" onClick={this.handleSidebarClose}>
               <Menu.Item name='gallery'>
                 <Icon name='image' />
                 גלריה
             </Menu.Item>
             </Link>
-            <Link to="/about">
+            <Link to="/about" onClick={this.handleSidebarClose}>
               <Menu.Item name='about'>
                 <Icon name='home' />
                 Home
@@ -81,6 +92,7 @@ class App extends Component {
           className={styles.content}
           onClick={this.handleSidebarClose}>
             <Segment basic>
+            {/* perhsaps use sticky => ? => <div className={styles.rightSideDiv}></div> */}
               <Route exact path="/residents" component={ResidentsContainer} />
               <Route exact path="/building" component={Building} />
               <Route exact path="/gallery" component={GalleryContainer} />

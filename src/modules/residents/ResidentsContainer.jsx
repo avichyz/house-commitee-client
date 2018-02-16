@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Residents from './Residents';
 
+
 const residents = [
     {
         isOwner: false,

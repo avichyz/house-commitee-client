@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Floor from '../floor/Floor'
+import Building from './Building'
 import { fromJS, list } from 'immutable';
-import styles from './building.scss';
 
 const data = [
     {
@@ -10,7 +9,6 @@ const data = [
         appartments: [
             {
                 appartmentNumber: 1,
-                isOwner: true,
                 residentName: 'אליהו אוחנה',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -18,7 +16,6 @@ const data = [
             },
             {
                 appartmentNumber: 2,
-                isOwner: true,
                 residentName: 'דייב הקופץ',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -31,7 +28,6 @@ const data = [
         appartments: [
             {
                 appartmentNumber: 6,
-                isOwner: true,
                 residentName: 'אלי ביטון',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -39,7 +35,6 @@ const data = [
             },
             {
                 appartmentNumber: 7,
-                isOwner: true,
                 residentName: 'נתי אסולין',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -47,7 +42,6 @@ const data = [
             },
             {
                 appartmentNumber: 8,
-                isOwner: true,
                 residentName: 'דוד בוגנים',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -56,7 +50,6 @@ const data = [
             ,
             {
                 appartmentNumber: 9,
-                isOwner: true,
                 residentName: 'אביחי זאנה',
                 phoneNumber1: '0524450941',
                 phoneNumber2: '0503145753',
@@ -71,31 +64,27 @@ const propTypes = {
     color: PropTypes.string,
     data: PropTypes.array
 }
-class Building extends Component {
-    render() {
+class BuildingContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: list() }
+    }
+    componentDidMount() {
         const imData = fromJS(data).sort((a, b) => {
             if (a.get('floorNumber') < b.get('floorNumber')) { return 1; }
             if (a.get('floorNumber') > b.get('floorNumber')) { return -1; }
             if (a.get('floorNumber') === b.get('floorNumber')) { return 0; }
         });
+        this.setState({ data: imData });
+    }
+    render() {
 
         return (
-            <div className={styles.container}>
-                {
-                    imData.map((floor, key) => {
-                        return (
-                            <Floor
-                                key={key}
-                                appartments={floor.get('appartments')}
-                                floor={floor.get('floorNumber')} />
-                        )
-                    })
-                }
-            </div>
+            <Building data={this.state.data}/>
         )
 
     }
 }
 
-Building.propTypes = propTypes;
-export default Building;
+BuildingContainer.propTypes = propTypes;
+export default BuildingContainer;
