@@ -1,0 +1,16 @@
+:local .container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+:local .form {
+    text-align: right;
+    max-width: 200px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+:local .submit {
+    margin-right: auto;
+}

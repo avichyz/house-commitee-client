@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, Table } from 'semantic-ui-react'
-import style from './residents.scss';
+import { Checkbox, Table, Button } from 'semantic-ui-react'
+import styles from './residents.scss';
+import AddResident from '../addResident/AddResident';
 
 const propTypes = {
     data: PropTypes.array
@@ -13,6 +14,7 @@ class Residents extends Component {
         this.state = {
             column: null,
             direction: null,
+            addResidentDialogOpened: false
         }
 
         this.handleSort = this.handleSort.bind(this);
@@ -42,34 +44,45 @@ class Residents extends Component {
         const { data, columns } = this.props;
 
         return (
-            <Table celled compact sortable definition className={style.table}>
-                <Table.Header fullWidth>
-                    <Table.Row>
-                        {
-                            this.props.columns.slice(0).reverse().map(column => {
-                                return <Table.HeaderCell>{column}</Table.HeaderCell>
-                            })
-                        }
-                    </Table.Row>
-                </Table.Header>
+            <div className={styles.container}>
+                {
+                    this.state.addResidentDialogOpened &&
+                    <AddResident /> ||
+                    <div className={styles.container}>
+                    <Button onClick={() => this.setState({ addResidentDialogOpened: true })} />
+                    <Table celled compact sortable definition className={styles.table}>
+                        <Table.Header fullWidth>
+                            <Table.Row>
+                                {
+                                    this.props.columns.slice(0).reverse().map((column, index) => {
+                                        return <Table.HeaderCell key={index}>{column}</Table.HeaderCell>
+                                    })
+                                }
+                            </Table.Row>
+                        </Table.Header>
 
-                <Table.Body>
-                    {
-                        this.props.data.map(row => {
-                            return (
-                                <Table.Row>
-                                    <Table.Cell>{row.phoneNumber2}</Table.Cell>
-                                    <Table.Cell>{row.phoneNumber1}</Table.Cell>
-                                    <Table.Cell>{row.appartment}</Table.Cell>
-                                    <Table.Cell>{row.name}</Table.Cell>
-                                    <Table.Cell collapsing>
-                                        <Checkbox slider defaultChecked={row.isOwner}/>
-                                    </Table.Cell>
-                                </Table.Row>);
-                        })
-                    }
-                </Table.Body>
-            </Table>
+                        <Table.Body>
+                            {
+                                this.props.data.map((row, index) => {
+                                    return (
+                                        <Table.Row key={index}>
+                                            <Table.Cell>{row.phoneNumber2}</Table.Cell>
+                                            <Table.Cell>{row.phoneNumber1}</Table.Cell>
+                                            <Table.Cell>{row.appartment}</Table.Cell>
+                                            <Table.Cell>{row.name}</Table.Cell>
+                                            <Table.Cell collapsing>
+                                                <Checkbox slider defaultChecked={row.isOwner} />
+                                            </Table.Cell>
+                                        </Table.Row>
+
+                                    );
+                                })
+                            }
+                        </Table.Body>
+                    </Table>
+                    </div>
+                }
+            </div>
         )
     }
 }
