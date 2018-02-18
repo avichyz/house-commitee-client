@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Segment, Button, Menu, Icon, Sidebar } from 'semantic-ui-react'
+import { Segment, Menu, Icon, Sidebar } from 'semantic-ui-react'
 // import Sidebar from '../components/Sidebar/Sidebar';
 import { Route, Link } from 'react-router-dom'
 import ResidentsContainer from '../modules/residents/ResidentsContainer';
 import GalleryContainer from '../modules/gallery/GalleryContainer';
 import Building from '../modules/buildingLayout/building/Building';
+import ForumContainer from '../modules/forum/ForumContainer';
 import AboutContainer from '../modules/about/AboutContainer';
 import store from '../store';
 import { push } from 'react-router-redux'
@@ -69,6 +70,12 @@ class App extends Component {
                 הזנת תשלומים
             </Menu.Item>
             </Link>
+            <Link to="/messages" onClick={this.handleSidebarClose}>
+              <Menu.Item name='messages'>
+                <Icon name='users' />
+                הודעות
+            </Menu.Item>
+            </Link>
             <Link to="/floors" onClick={this.handleSidebarClose}>
                 <Menu.Item name='floors'>
                   <Icon name='users' />
@@ -95,6 +102,7 @@ class App extends Component {
             {/* perhsaps use sticky => ? => <div className={styles.rightSideDiv}></div> */}
               <Route exact path="/residents" component={ResidentsContainer} />
               <Route exact path="/building" component={Building} />
+              <Route exact path="/messages" component={ForumContainer} />
               <Route exact path="/gallery" component={GalleryContainer} />
               <Route exact path="/about" component={AboutContainer} />
             </Segment>

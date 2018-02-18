@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Checkbox, Table } from 'semantic-ui-react'
-import style from './forum.scss';
+// import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+// import style from './forum.scss';
 
 const propTypes = {
     data: ImmutablePropTypes.map
@@ -9,9 +9,7 @@ const propTypes = {
 class Message extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            
         }
 
     }
@@ -20,9 +18,17 @@ class Message extends Component {
         const { data } = this.props;
 
         return (
-         <div>
-             some data of  a message
-         </div>
+            <div>
+                <div>
+                    {data.get('writerName')}
+                </div>
+                <div>
+                    {data.get('header')}
+                </div>
+                <div>
+                    {data.get('content')}
+                </div>
+            </div>
         )
     }
 }
