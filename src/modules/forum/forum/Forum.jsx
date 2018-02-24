@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Loader } from 'semantic-ui-react'
-import Message from './Message';
-// import style from './forum.scss';
+import AutoScroll from '../../../components/autoScroll/AutoScroll';
+import Message from '../../../components/message/Message';
+import styles from './forum.scss';
 
 const propTypes = {
     messages: ImmutablePropTypes.list
@@ -22,8 +23,9 @@ class Forum extends Component {
         const { messages } = this.props;
 
         return (
-            <div>
+            <div className={styles.container}>
                 <Loader disabled />
+                <AutoScroll className={styles.autoScroll}>
                 {
                     messages.map((mes, index) =>
                         <Message
@@ -31,6 +33,7 @@ class Forum extends Component {
                             data={mes} />
                     )
                 }
+                </AutoScroll>
             </div>
         )
     }
