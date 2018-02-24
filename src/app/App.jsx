@@ -98,7 +98,7 @@ class App extends Component {
           <Sidebar.Pusher 
           className={styles.content}
           onClick={this.handleSidebarClose}>
-            <Segment basic>
+            <Segment basic className={styles.container}>
             {/* perhsaps use sticky => ? => <div className={styles.rightSideDiv}></div> */}
               <Route exact path="/residents" component={ResidentsContainer} />
               <Route exact path="/building" component={Building} />

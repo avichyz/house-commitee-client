@@ -53,6 +53,11 @@
     background-color: rgb(218, 218, 218) !important;
 }
 
+:local .container {
+    height: 100%;
+    width: 100%;
+}
+
 :local .rightSideDiv {
   height: 100%;
   padding-left: 14px;

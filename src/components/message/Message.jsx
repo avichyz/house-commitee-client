@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-// import style from './forum.scss';
+import styles from './message.scss';
 
 const propTypes = {
     data: ImmutablePropTypes.map
@@ -18,14 +18,14 @@ class Message extends Component {
         const { data } = this.props;
 
         return (
-            <div>
-                <div>
+            <div className={styles.container}>
+                <div className={styles.writer}>
                     {data.get('writerName')}
                 </div>
-                <div>
+                <div className={styles.header}>
                     {data.get('header')}
                 </div>
-                <div>
+                <div className={styles.content}>
                     {data.get('content')}
                 </div>
             </div>
