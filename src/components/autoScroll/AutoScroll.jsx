@@ -13,8 +13,8 @@ class AutoScroll extends Component {
         const segmentClasses = classNames(styles.container, className)
         return (
             <Segment className={segmentClasses}>
-                <div class="microsoft container">
-                    <div class="marquee">
+                <div className="microsoft container">
+                    <div className="marquee">
                     {this.props.children}
                     </div>
                 </div>

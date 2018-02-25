@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, Table, Button } from 'semantic-ui-react'
+import { Checkbox, Table, Button, Modal, Header } from 'semantic-ui-react'
 import styles from './residents.scss';
-import AddResident from '../addResident/AddResident';
+import AddResidentContainer from '../addResident/AddResidentContainer';
 
 const propTypes = {
     data: PropTypes.array
@@ -47,7 +47,7 @@ class Residents extends Component {
             <div className={styles.container}>
                 {
                     this.state.addResidentDialogOpened &&
-                    <AddResident /> ||
+                    <AddResidentContainer /> ||
                     <div className={styles.container}>
                     <Button onClick={() => this.setState({ addResidentDialogOpened: true })} />
                     <Table celled compact sortable definition className={styles.table}>
@@ -82,6 +82,24 @@ class Residents extends Component {
                     </Table>
                     </div>
                 }
+                <Modal 
+                className={styles.modal}
+                trigger={
+                <Button 
+                color='facebook' 
+                floated='right'
+                className={styles.addResident}>
+                הוסף דייר
+                </Button>
+                }>
+                    <Modal.Header className={styles.modalHeader}>דייר חדש</Modal.Header>
+                    <Modal.Content>
+                        <Modal.Description>
+                            <AddResidentContainer/>
+                        </Modal.Description>
+                    </Modal.Content>
+                </Modal>
+
             </div>
         )
     }
