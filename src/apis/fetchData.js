@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-export default function fetchData(url, opt={}) {
+export function fetchData(url, opt={}) {
   return fetch(opt.query ? makeUrl(url, opt.query) : url, {
     ...opt,
     // 'same-origin'  or 'include'

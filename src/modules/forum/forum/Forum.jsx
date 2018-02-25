@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { Loader } from 'semantic-ui-react'
+import { Loader, Button } from 'semantic-ui-react'
 import AutoScroll from '../../../components/autoScroll/AutoScroll';
 import Message from '../../../components/message/Message';
 import styles from './forum.scss';
@@ -34,6 +34,12 @@ class Forum extends Component {
                     )
                 }
                 </AutoScroll>
+                <Button 
+                color='facebook' 
+                floated='right'
+                className={styles.addMessage}>
+                כתוב הודעה
+                </Button>
             </div>
         )
     }

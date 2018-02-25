@@ -1,12 +1,15 @@
-    
-    :local .table {
-        text-align: center !important;
-    }
+       :local .table {
+          text-align: center !important;
+      }
 
-    :local .container {
-        height: 100%;
-    }
+       :local .container {
+          height: 100%;
+      }
 
-    :local .autoScroll {
-        height: 100%;
-    }
+       :local .autoScroll {
+          height: 100%;
+      }
+
+      :local .addMessage {
+          margin-top: 8px !important;
+      }
