@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
+const baseAddress = "http://localhost:8081/";
 
 export function fetchData(url, opt={}) {
+  url = `${baseAddress}${url}`;
   return fetch(opt.query ? makeUrl(url, opt.query) : url, {
     ...opt,
     // 'same-origin'  or 'include'
@@ -9,7 +11,12 @@ export function fetchData(url, opt={}) {
     const contentType = res.headers.get('Content-Type')
     const isJson = contentType.indexOf('json') >= 0
     const dataPromise = isJson ? res.json() : res.text()
-    return res.status >= 400 ? dataPromise.then(data => Promise.reject({status: res.status, data: data})) : dataPromise
+    return res.status >= 400 ? 
+    dataPromise.then(data => {
+      console.log(data)
+      Promise.reject({status: res.status, data: data})
+    }) : 
+    dataPromise
   })
 }
 
