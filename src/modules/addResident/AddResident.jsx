@@ -26,7 +26,8 @@ class AddResident extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange = (e, { name, value }) => this.setState({ [name]: value })
+    handleChange = (e, { name, value }) =>
+        this.setState({ [name]: value })
 
     handleSubmit = () => {
         let newResident = this.state;
@@ -36,31 +37,31 @@ class AddResident extends Component {
         const { name, lastName, appartment, email, phone, cellPhone } = this.state
 
         return (
-                <Form success className={styles.form} onSubmit={this.handleSubmit}>
-                        <Form.Input label='שם' onChange={this.handleChange}/>
-                        <Form.Input label='שם משפחה' onChange={this.handleChange} />
-                        <Form.Input label='דירה' onChange={this.handleChange}/>
-                        <Form.Input label='טלפון' onChange={this.handleChange}/>
-                        <Form.Input label='נייד' onChange={this.handleChange}/>
-                        {this.state.success &&
-                            <Message
-                                success
-                                header='Form Completed'
-                                content="You're all signed up for the newsletter"
-                            />}
-                        {this.state.error &&
-                            <Message
-                                success
-                                header='Form failed'
-                                content="You're not signed up for the newsletter"
-                            />}
-                        <Button
-                            className={styles.submit}
-                            color='facebook'
-                            floated='left'
-                            onClick={this.props.handleSubmit}
-                        >שמור</Button>
-                    </Form>
+            <Form success className={styles.form} onSubmit={this.handleSubmit}>
+                <Form.Input label='שם' name='name' value={name} onChange={this.handleChange} />
+                <Form.Input label='שם משפחה' name='lastName' value={lastName} onChange={this.handleChange} />
+                <Form.Input label='דירה' name='appartment' value={appartment} onChange={this.handleChange} />
+                <Form.Input label='טלפון' name='phone' value={phone} onChange={this.handleChange} />
+                <Form.Input label='נייד' name='cellPhone' value={cellPhone} onChange={this.handleChange} />
+                {this.state.success &&
+                    <Message
+                        success
+                        header='Form Completed'
+                        content="You're all signed up for the newsletter"
+                    />}
+                {this.state.error &&
+                    <Message
+                        success
+                        header='Form failed'
+                        content="You're not signed up for the newsletter"
+                    />}
+                <Button
+                    className={styles.submit}
+                    color='facebook'
+                    floated='left'
+                    onClick={this.props.handleSubmit}
+                >שמור</Button>
+            </Form>
         )
     }
 }
