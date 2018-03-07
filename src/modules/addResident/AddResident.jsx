@@ -18,8 +18,8 @@ class AddResident extends Component {
             lastName: '',
             appartment: '',
             email: '',
-            phone: '',
-            cellPhone: ''
+            cellPhone: '',
+            homePhone: ''
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -30,19 +30,27 @@ class AddResident extends Component {
         this.setState({ [name]: value })
 
     handleSubmit = () => {
-        let newResident = this.state;
+        let newResident = 
+        {
+                name: this.state.name,
+                lastName: this.state.lastName,
+                appartment: this.state.appartment,
+                email: this.state.email,
+                phoneNumber1: this.state.cellPhone,
+                phoneNumber2: this.state.homePhone
+        }
         this.props.onSubmit(newResident);
     }
     render() {
-        const { name, lastName, appartment, email, phone, cellPhone } = this.state
+        const { name, lastName, appartment, email, cellPhone, homePhone } = this.state
 
         return (
             <Form success className={styles.form} onSubmit={this.handleSubmit}>
                 <Form.Input label='שם' name='name' value={name} onChange={this.handleChange} />
                 <Form.Input label='שם משפחה' name='lastName' value={lastName} onChange={this.handleChange} />
                 <Form.Input label='דירה' name='appartment' value={appartment} onChange={this.handleChange} />
-                <Form.Input label='טלפון' name='phone' value={phone} onChange={this.handleChange} />
-                <Form.Input label='נייד' name='cellPhone' value={cellPhone} onChange={this.handleChange} />
+                <Form.Input label='טלפון' name='phone' value={cellPhone} onChange={this.handleChange} />
+                <Form.Input label='נייד' name='cellPhone' value={homePhone} onChange={this.handleChange} />
                 {this.state.success &&
                     <Message
                         success

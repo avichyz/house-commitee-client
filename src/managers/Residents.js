@@ -5,5 +5,5 @@ export const getResidents = (payload) => {
 }
 
 export const saveResident = (payload) => {
-    postJson(`residents`, payload)
+    postJson(`residents/`, payload)
 }
