@@ -1,0 +1,14 @@
+
+:local .form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: right;
+    max-width: 200px !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+:local .submit {
+    margin-right: auto;
+}
