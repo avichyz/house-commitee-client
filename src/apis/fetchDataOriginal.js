@@ -1,31 +1,12 @@
-import fetch from 'node-fetch';
-import Bluebird from 'bluebird';
-//require('es6-promise').polyfill();
-// import fetch from 'isomorphic-fetch'
-
-
-//const baseAddress = "https://hc-server.herokuapp.com/";
-const baseAddress = "http://localhost:8081/";
-fetch.Promise = Bluebird;
-
-export function postJson(url, json, method='POST') {
-  return fetchData(url, {
-    method: method,
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(json)
-  })
-}
-
+import fetch from 'isomorphic-fetch'
+const baseAddress = "https://hc-server.herokuapp.com/";
 
 export function fetchData(url, opt={}) {
   url = `${baseAddress}${url}`;
   return fetch(opt.query ? makeUrl(url, opt.query) : url, {
     ...opt,
     // 'same-origin'  or 'include'
-    credentials: 'include'
+    credentials: 'same-origin'
   }).then(res => {
     const contentType = res.headers.get('Content-Type')
     const isJson = contentType.indexOf('json') >= 0
@@ -39,6 +20,16 @@ export function fetchData(url, opt={}) {
   })
 }
 
+export function postJson(url, json, method='post') {
+  return fetchData(url, {
+    method: method,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(json)
+  })
+}
 
 export const makeUrl = (url, params) =>
   url + (params && Object.keys(params).length ? '?' + queryStringify(params) : '')

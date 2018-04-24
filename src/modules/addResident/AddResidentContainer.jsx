@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { saveResident } from '../../managers/Residents';
+import { saveResident, getResidents } from '../../managers/Residents';
 import AddResident from './AddResident';
 
 const propTypes = {
@@ -18,6 +18,9 @@ class AddResidentContainer extends Component {
     }
 
     handleSubmit(resident) {    
+        //saveResident(resident);
+        //getResidents()
+        //.then(res=>console.log(res))
         saveResident(resident);
     }
     render() {

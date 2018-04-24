@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Button, Form, Message } from 'semantic-ui-react'
-import { SaveResident } from '../../managers/Residents';
 import styles from './addResident.scss';
 
 const propTypes = {
